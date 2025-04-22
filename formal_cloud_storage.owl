@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:cs="http://example.org/cloud#">
+
+  <!-- Ontology Definition -->
+  <owl:Ontology rdf:about="http://example.org/cloud"/>
+
+  <!-- Classes -->
+  <owl:Class rdf:about="http://example.org/cloud#ObjectStorage"/>
+  <owl:Class rdf:about="http://example.org/cloud#StorageTier"/>
+  <owl:Class rdf:about="http://example.org/cloud#Feature"/>
+  <owl:Class rdf:about="http://example.org/cloud#EncryptionMethod"/>
+
+  <!-- Object Properties -->
+  <owl:ObjectProperty rdf:about="http://example.org/cloud#hasFeature">
+    <rdfs:domain rdf:resource="http://example.org/cloud#ObjectStorage"/>
+    <rdfs:range rdf:resource="http://example.org/cloud#Feature"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://example.org/cloud#hasTier">
+    <rdfs:domain rdf:resource="http://example.org/cloud#ObjectStorage"/>
+    <rdfs:range rdf:resource="http://example.org/cloud#StorageTier"/>
+  </owl:ObjectProperty>
+
+  <!-- Individuals -->
+  <cs:AWS_S3 rdf:about="http://example.org/cloud#AWS_S3">
+    <rdf:type rdf:resource="http://example.org/cloud#ObjectStorage"/>
+    <cs:hasFeature rdf:resource="http://example.org/cloud#Encryption"/>
+    <cs:hasTier rdf:resource="http://example.org/cloud#Archive"/>
+  </cs:AWS_S3>
+
+  <cs:OpenStack_Swift rdf:about="http://example.org/cloud#OpenStack_Swift">
+    <rdf:type rdf:resource="http://example.org/cloud#ObjectStorage"/>
+    <cs:hasFeature rdf:resource="http://example.org/cloud#Encryption"/>
+    <cs:hasTier rdf:resource="http://example.org/cloud#Standard"/>
+  </cs:OpenStack_Swift>
+
+  <!-- Features -->
+  <cs:Encryption rdf:about="http://example.org/cloud#Encryption">
+    <rdf:type rdf:resource="http://example.org/cloud#Feature"/>
+  </cs:Encryption>
+
+  <cs:Versioning rdf:about="http://example.org/cloud#Versioning">
+    <rdf:type rdf:resource="http://example.org/cloud#Feature"/>
+  </cs:Versioning>
+
+  <!-- Tiers -->
+  <cs:Standard rdf:about="http://example.org/cloud#Standard">
+    <rdf:type rdf:resource="http://example.org/cloud#StorageTier"/>
+  </cs:Standard>
+
+  <cs:Archive rdf:about="http://example.org/cloud#Archive">
+    <rdf:type rdf:resource="http://example.org/cloud#StorageTier"/>
+  </cs:Archive>
+
+  <!-- Encryption Methods -->
+  <cs:KMS rdf:about="http://example.org/cloud#KMS">
+    <rdf:type rdf:resource="http://example.org/cloud#EncryptionMethod"/>
+  </cs:KMS>
+
+  <cs:MiddlewareEncryption rdf:about="http://example.org/cloud#MiddlewareEncryption">
+    <rdf:type rdf:resource="http://example.org/cloud#EncryptionMethod"/>
+  </cs:MiddlewareEncryption>
+
+</rdf:RDF>

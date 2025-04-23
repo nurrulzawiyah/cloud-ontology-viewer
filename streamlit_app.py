@@ -83,11 +83,11 @@ with st.form("survey"):
         log_action("survey", query=None, results=f"ease:{ease}, satisfaction:{satisfaction}, comments:{comments}")
         st.success("Thank you for your feedback!")
 
-if st.button("Download Activity Log"):
-    df_log = pd.DataFrame(st.session_state['log'])
-    df_log.to_csv("user_activity_log.csv", index=False)
-    st.success("Log saved as user_activity_log.csv")
-    st.dataframe(df_log)
+# if st.button("Download Activity Log"):
+   # df_log = pd.DataFrame(st.session_state['log'])
+  #  df_log.to_csv("user_activity_log.csv", index=False)
+ #   st.success("Log saved as user_activity_log.csv")
+#    st.dataframe(df_log)
 
 # ----- Researcher Log Download with Password Protection -----
 with st.expander("For Researchers Only"):

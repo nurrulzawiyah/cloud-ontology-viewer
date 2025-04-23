@@ -89,3 +89,16 @@ if st.button("Download Activity Log"):
     st.success("Log saved as user_activity_log.csv")
     st.dataframe(df_log)
 
+# ----- Researcher Log Download with Password Protection -----
+with st.expander("For Researchers Only"):
+    password = st.text_input("Enter researcher password to access the activity log:", type="password")
+    if password == "babe123":  # Change this to a real password!
+        st.success("Access granted.")
+        if st.button("Download Activity Log"):
+            df_log = pd.DataFrame(st.session_state['log'])
+            df_log.to_csv("user_activity_log.csv", index=False)
+            st.success("Log saved as user_activity_log.csv")
+            st.dataframe(df_log)
+    elif password != "":
+        st.error("Incorrect password. Please try again.")
+

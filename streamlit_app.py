@@ -2,6 +2,9 @@ import streamlit as st
 from rdflib import Graph
 import pandas as pd
 from datetime import datetime
+# Logging setup
+if 'log' not in st.session_state:
+    st.session_state['log'] = []
 
 # Load ontology
 g = Graph()
@@ -51,10 +54,6 @@ st.subheader("Results")
 qres = g.query(queries[query_option])
 for row in qres:
     st.write(str(row[0]))
-
-# Logging setup
-if 'log' not in st.session_state:
-    st.session_state['log'] = []
 
 def log_action(action, query=None, results=None):
     st.session_state['log'].append({
